@@ -1,0 +1,120 @@
+.app--drawer {
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    background-color: #fff;
+}
+
+.app--drawer ul li a span {
+    font-weight: 400;
+    color: var(--gray-500);
+    font-size: 14px;
+}
+
+.app--drawer ul li a {
+    display: block;
+    padding: 0.6rem 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.app--drawer ul li a:hover:not(.app--drawer ul li .router-link-exact-active) {
+    background-color: var(--primary-color);
+}
+
+.app--drawer ul li .router-link-exact-active {
+    position: relative;
+}
+
+.app--drawer ul li .router-link-exact-active span {
+    color: var(--primary-color);
+}
+
+#main--content {
+    margin-left: 250px;
+}
+
+.app--header {
+    background-color: #fff;
+}
+
+.search--field input {
+    display: block;
+    width: 100%;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    padding: 0.8rem 0.6rem;
+    font-size: 0.8rem;
+}
+
+.search--field {
+    display: flex;
+    align-items: center;
+    background-color: var(--accent-color);
+    border-radius: 15px;
+    padding-left: 15px;
+    width: 35%;
+}
+
+
+/* Anaytics  */
+
+.analytics--card {
+    background-color: #fff;
+    padding: 0.7rem;
+    border-radius: 10px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.analytics--card .icon--area,
+.icon--area {
+    background-color: var(--accent-color);
+    padding: 0.4rem;
+    border-radius: 10px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: var(--primary-color);
+}
+
+
+/* Referrals  */
+
+.referral--codes input {
+    display: block;
+    width: 100%;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    padding: 0.8rem 0.6rem;
+    font-size: 1rem;
+}
+
+.referral--codes {
+    display: flex;
+    align-items: center;
+    background-color: var(--accent-color);
+    border-radius: 15px;
+    padding-left: 15px;
+    width: 50%;
+}
+
+
+/* Orders */
+
+.orders .el-tabs__item.is-active {
+    color: var(--primary-color);
+}
+
+.orders .el-tabs__item:hover {
+    color: var(--primary-color);
+}
+
+.orders .el-tabs__active-bar {
+    background-color: var(--primary-color);
+}

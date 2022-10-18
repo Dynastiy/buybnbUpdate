@@ -1,0 +1,5 @@
+    @media (max-width: 990px) {
+        .d-flex-analytics {
+            flex-wrap: wrap;
+        }
+    }

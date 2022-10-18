@@ -1,0 +1,11 @@
+<template>
+    <div>
+        <div>
+            <div>
+                <div>
+                    Transactions
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
