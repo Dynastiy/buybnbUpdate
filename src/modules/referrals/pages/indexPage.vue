@@ -7,14 +7,14 @@
           <h4>Referrals</h4>
           <small class="text-muted">
             Invite your friends to buyBNB. If they sign up and complete a
-            transaction, you get 0.01% of the BNB quantity transacted.
+            transaction, you get <span class="font-weight-bold">0.1USD</span>.
           </small>
         </div>
 
         <!-- Guide -->
         <section
           class="d-flex d-flex-analytics align-items-center mt-4"
-          style="gap: 80px"
+          style="gap:80px"
         >
           <div class="text-center">
             <div class="text-center d-flex justify-content-center">
@@ -28,7 +28,7 @@
             </small>
           </div>
 
-          <div>
+          <div class="divider--icon">
             <i-icon icon="tabler:arrows-join-2"></i-icon>
           </div>
 
@@ -44,7 +44,7 @@
             </small>
           </div>
 
-          <div>
+          <div class="divider--icon">
             <i-icon icon="tabler:arrows-join-2"></i-icon>
           </div>
 
@@ -66,16 +66,16 @@
         <section class="mt-5">
           
           <h5 class="font-weight-bold mb-3">Share the referral link/Code</h5>
-          <div class="d-flex w-100" style="gap:40px">
+          <div class="d-flex d-flex-analytics w-100" style="gap:40px">
             <!-- Copy referral link -->
-              <div class="referral--codes pr-3">
-                <input type="text" placeholder="search" />
+              <div class="referral--codes pr-3 w-100">
+                <input type="text" v-model="referral_link"  placeholder="referral link" />
                 <i-icon icon="ion:copy"></i-icon>
               </div>
 
             <!-- Copy referral code  -->
-              <div class="referral--codes pr-3">
-                <input type="text" placeholder="search" />
+              <div class="referral--codes pr-3 w-100">
+                <input type="text" v-model="user.ref_code"  placeholder="referral code" />
                 <i-icon icon="ion:copy"></i-icon>
               </div>
           </div>
@@ -98,11 +98,9 @@
           <table class="table table-centered table-nowrap mb-0">
             <thead>
               <tr>
-                <th scope="col">Reference</th>
-                <th scope="col">Date</th>
-                <th scope="col">Amount (NGN)</th>
-                <th scope="col">Amount (BNB)</th>
-                <th scope="col">Status</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Created At</th>
               </tr>
             </thead>
             <tbody>
@@ -116,3 +114,24 @@
     </div>
   </div>
 </template>
+
+<script>
+import {mapState, mapActions} from 'vuex'
+export default {
+  methods:{
+    ...mapActions('referrals', ['getReferrals'])
+  },
+  beforeMount(){
+    this.getReferrals()
+  },
+  mounted(){
+    console.log(window.location.origin)
+  },
+  computed:{
+    ...mapState('auth', ['user']),
+    referral_link(){
+      return window.location.origin + '/register/?referral_id=' + this.user.ref_code
+    }
+  }
+}
+</script>

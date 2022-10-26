@@ -6,7 +6,7 @@
       <div class="user-login-container">
         <div class="user--login">
           <div class="login--box">
-            <div class="mb-2 text-center">
+            <div class="mb-3 text-center">
                 <div class="text-center mb-1">
                 <img src="@/assets/img/icon.svg" width="40" alt="">
             </div>
@@ -15,8 +15,7 @@
             </div>
            <form action="" @submit.prevent="userLogin">
               <div class="mb-3">
-                <label class="" for="">Email</label>
-                <input type="email" v-model="credentials.email"/>
+                <input type="email" v-model="credentials.email" placeholder="Enter Email"/>
                 <small
                   class="text-danger"
                   v-for="error in errorMsg.email"
@@ -25,8 +24,7 @@
                 </small>
               </div>
               <div class="mb-1">
-                <label class="" for="">Password</label>
-                <input type="password" v-model="credentials.password"/>
+                <input type="password" v-model="credentials.password" placeholder="Enter Password"/>
                 <small
                   class="text-danger"
                   v-for="error in errorMsg.password"
@@ -34,7 +32,7 @@
                   >* {{ error }}
                 </small>
               </div>
-              <div class="text-right mb-2">
+              <div class="text-right mb-3">
               <span class=""> <router-link to="/forgot-password" class="">Forgot Password?</router-link> </span>
             </div>  
               <div>

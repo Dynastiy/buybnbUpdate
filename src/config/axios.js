@@ -55,6 +55,10 @@ export default function() {
             //  Invalid token, Not Authenticated.
             if (err.response && err.response.status === 401) {
                 console.log(9090);
+                let currentUrl = window.location.pathname
+                if (err.response.data.message === 'Unauthenticated.') {
+                    window.location.href = `/login?redirectFrom=${currentUrl}`;
+                }
                 // if (storeObj.auth) {
 
                 // }

@@ -13,7 +13,8 @@ Vue.use(Vuex);
 const getDefaultState = () => {
     return {
         analytics: null,
-        loading: null
+        loading: null,
+        order: {}
     }
 };
 
@@ -26,6 +27,9 @@ export default {
         getAnalytics: state => {
             return state.analytics;
         },
+        getOrder: state => {
+            return state.order;
+        },
         isLoading: state => {
             return state.loading;
         },
@@ -33,6 +37,9 @@ export default {
     mutations: {
         SET_ANALYTICS: (state, data) => {
             state.analytics = data;
+        },
+        SET_ORDER: (state, data) => {
+            state.order = data;
         },
         SET_LOADING: (state, data) => {
             state.loading = data;
@@ -56,6 +63,22 @@ export default {
                     commit("SET_LOADING", false)
                 })
         },
+
+        getSingleOrder({ commit }, id) {
+            commit("SET_LOADING", true)
+            http().get(`/find-deposit/${id}`)
+                .then((res) => {
+                    console.log(res);
+                    commit("SET_ORDER", res.data.deposit)
+                })
+                .catch((err) => {
+                    return err
+                })
+                .finally(() => {
+                    commit("SET_LOADING", false)
+                })
+        },
+
         logout: ({ commit }) => {
             commit('RESET', '');
         }

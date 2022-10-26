@@ -1,12 +1,13 @@
 <template>
     <div>
         <div>
-            <div class="app--header container--fluid">
-                <div class="d-flex align-items-center justify-content-between">
-                    <div class="search--field">
+            <div class="app--header container-fluid">
+                <div class="d-flex align-items-center justify-content-end">
+                    
+                    <!-- <div class="search--field">
                         <i-icon icon="akar-icons:search"></i-icon>
                         <input type="text" placeholder="search">
-                    </div>
+                    </div> -->
 
                     <div class="user d-flex align-items-center" style="gap:15px">
                         <span :class="user.name.charAt(0)" class="user--avatar text-capitalize"> {{ user.name.charAt(0) }} </span>

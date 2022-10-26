@@ -15,6 +15,9 @@ Vue.use(ElementUI);
 import { Icon } from '@iconify/vue2';
 Vue.component("i-icon", Icon)
 
+import VueClipboard from 'vue-clipboard2'
+Vue.use(VueClipboard)
+
 Vue.config.productionTip = false
 
 new Vue({

@@ -1,13 +1,131 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import UserView from '../layouts/userLayout.vue'
+import HomeView from '../layouts/homeLayout.vue'
 
 Vue.use(VueRouter)
 
 const routes = [{
+        path: '/',
+        name: 'home',
+        component: HomeView,
+        children: [{
+                path: '',
+                // route level code-splitting
+                // this generates a separate chunk (about.[hash].js) for this route
+                // which is lazy-loaded when the route is visited.
+                component: () =>
+                    import ( /* webpackChunkName: "about" */ '../modules/home/pages/indexPage.vue')
+            },
+            {
+                path: '/bnb/ng',
+                // route level code-splitting
+                // this generates a separate chunk (about.[hash].js) for this route
+                // which is lazy-loaded when the route is visited.
+                component: () =>
+                    import ( /* webpackChunkName: "about" */ '../modules/home/pages/transactBNB.vue'),
+                children: [{
+                        path: '',
+                        name: 'bnb-ng',
+                        // route level code-splitting
+                        // this generates a separate chunk (about.[hash].js) for this route
+                        // which is lazy-loaded when the route is visited.
+                        component: () =>
+                            import ( /* webpackChunkName: "about" */ '../modules/home/pages/selectOption.vue')
+                    }, {
+                        path: '/buy/bnb',
+                        name: 'buy-bnb',
+                        // route level code-splitting
+                        // this generates a separate chunk (about.[hash].js) for this route
+                        // which is lazy-loaded when the route is visited.
+                        component: () =>
+                            import ( /* webpackChunkName: "about" */ '../modules/home/pages/buyBNB.vue')
+                    },
+
+                    {
+                        path: '/sell/bnb',
+                        name: 'sell-bnb',
+                        // route level code-splitting
+                        // this generates a separate chunk (about.[hash].js) for this route
+                        // which is lazy-loaded when the route is visited.
+                        component: () =>
+                            import ( /* webpackChunkName: "about" */ '../modules/home/pages/sellBNB.vue')
+                    },
+                    {
+                        path: '/buy/bnb/account-details',
+                        name: 'account-details',
+                        async beforeEnter(to, from, next) {
+                            var loggedIn
+                            loggedIn = localStorage.getItem("token")
+                            console.log(loggedIn);
+                            if (!loggedIn) {
+                                next({
+                                    name: "login",
+                                    query: { redirectFrom: to.fullPath },
+                                });
+                            } else {
+                                next();
+                            }
+                        },
+                        // route level code-splitting
+                        // this generates a separate chunk (about.[hash].js) for this route
+                        // which is lazy-loaded when the route is visited.
+                        component: () =>
+                            import ( /* webpackChunkName: "about" */ '../modules/home/pages/accountDetails.vue')
+                    },
+                    {
+                        path: '/buy/bnb/wallet-details',
+                        name: 'wallet-details',
+                        async beforeEnter(to, from, next) {
+                            var loggedIn
+                            loggedIn = localStorage.getItem("token")
+                            console.log(loggedIn);
+                            if (!loggedIn) {
+                                next({
+                                    name: "login",
+                                    query: { redirectFrom: to.fullPath },
+                                });
+                            } else {
+                                next();
+                            }
+                        },
+                        // route level code-splitting
+                        // this generates a separate chunk (about.[hash].js) for this route
+                        // which is lazy-loaded when the route is visited.
+                        component: () =>
+                            import ( /* webpackChunkName: "about" */ '../modules/home/pages/walletDetails.vue')
+                    },
+                    {
+                        path: '/bnb/ng/order/:id',
+                        name: 'order-details',
+                        // route level code-splitting
+                        // this generates a separate chunk (about.[hash].js) for this route
+                        // which is lazy-loaded when the route is visited.
+                        component: () =>
+                            import ( /* webpackChunkName: "about" */ '../modules/home/pages/orderId.vue')
+                    },
+                ]
+            },
+
+        ]
+    },
+    {
         path: '/dashboard',
         name: 'home',
         component: UserView,
+        async beforeEnter(to, from, next) {
+            var loggedIn
+            loggedIn = localStorage.getItem("token")
+            console.log(loggedIn);
+            if (!loggedIn) {
+                next({
+                    name: "login",
+                    query: { redirectFrom: to.fullPath },
+                });
+            } else {
+                next();
+            }
+        },
         children: [{
                 path: '',
                 // route level code-splitting
@@ -62,6 +180,15 @@ const routes = [{
         // which is lazy-loaded when the route is visited.
         component: () =>
             import ( /* webpackChunkName: "about" */ '../modules/auth/pages/userLogin.vue')
+    },
+    {
+        path: '/register',
+        name: 'register',
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () =>
+            import ( /* webpackChunkName: "about" */ '../modules/auth/pages/userRegistration.vue')
     },
     {
         path: '/about',

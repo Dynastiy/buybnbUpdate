@@ -1,6 +1,6 @@
 @import url('@/assets/css/partials.css');
 .modal--mask {
-    background-color: var(--cover);
+    background-color: var(--main-color-faded);
     position: fixed;
     left: 0;
     top: 0;
@@ -9,6 +9,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 999;
 }
 
 .modal--content {
@@ -18,144 +19,278 @@
     border-radius: 10px;
 }
 
-.smile--form input,
-.smile--form textarea,
-.smile--form select {
-    background-color: var(--tertiary-color);
-    width: 100%;
-    border: none;
-    padding: 1.2rem 1.3rem;
-    font-size: 0.8rem;
-    border-radius: 10px;
-    color: var(--accent-color-dark);
-    outline: none;
+.modal--content input[type='text'] {
     display: block;
-}
-
-.smile--form input::placeholder,
-.smile--form textarea::placeholder {
-    color: #5e5e5e;
-}
-
-.smile--form #with-flag {
-    outline: none;
-    background-color: transparent;
-    padding: 0;
-    border-radius: 0;
-}
-
-.smile--form .input--with_flag select {
-    background-color: transparent;
-    padding: 0;
-    width: max-content;
-    border-radius: 0;
-}
-
-.smile--form .input--with_flag label {
-    font-size: 0.7rem;
-    color: #5e5e5e;
-    font-weight: 300;
-    margin: 0;
-}
-
-.smile--form .input--with_flag {
-    background-color: var(--tertiary-color);
     width: 100%;
-    border: none;
-    padding: 0.5rem 1.5rem 1.3rem 1.5rem;
-    font-size: 0.8rem;
-    border-radius: 10px;
-    color: var(--accent-color-dark);
+    padding: 0.6rem;
+    border: 1px solid var(--gray-300);
+    border-radius: 5px;
 }
 
-.p2p--receive .smile--tag {
-    background-color: var(--tertiary-color);
+.modal--content input[type=text]::placeholder {
+    color: var(--gray-500);
+    font-size: 0.8rem;
+}
+
+.app--nav {
+    background-color: var(--main-color);
+}
+
+.app--nav ul li a {
+    color: #fff;
+    position: relative;
+    font-size: 0.9rem;
+}
+
+.app--nav ul li .router-link-exact-active::after {
+    content: "";
+    width: 100%;
+    height: 3px;
+    background-color: #fff;
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+}
+
+.app--nav ul li .router-link-exact-active {
+    color: var(--primary-color);
+}
+
+.app--nav ul li .router-link-exact-active::before {
+    content: "";
+    width: 100%;
+    height: 3px;
+    background-color: var(--primary-color);
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+}
+
+.app--nav ul li a::after {
+    content: "";
+    width: 100%;
+    height: 3px;
+    background-color: #fff;
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    transition: transform 0.2s;
+    transform: scaleX(0);
+    transform-origin: right;
+}
+
+.app--nav ul li a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.app--header_top {
+    background: var(--main-color-faded);
+    background-image: url('../img/cryptocurrency.jpeg');
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.hero--section {
+    height: 500px;
     display: flex;
-    width: 80%;
-    margin: 0 auto;
-    border-radius: 10px;
-    padding-right: 0.5rem;
     align-items: center;
 }
 
-.p2p--receive input {
-    width: 100%;
-    display: block;
-    padding: 0.6rem 1rem;
-    border: transparent;
-    background: transparent;
-    font-size: 1.4rem;
-    outline: none;
-    text-align: center;
-}
-
-
-/* Exchanges  */
-
-.app--exchange {
-    position: relative;
-    height: calc(80vh - 0.2rem);
-}
-
-.exchange--money {
-    margin-right: 400px;
-}
-
-.exchange--rates {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 400px;
-    border-left: 1px dashed var(--accent);
-    height: 100%;
-}
-
-.select--currency select {
-    padding: 0.3rem 0.5rem;
-    border: 1px solid var(--tertiary-color);
-    border-radius: 5px;
-    color: var(--tertiary-color);
-    outline: none;
-}
-
-.amount--to_exchange label {
-    display: block;
-    color: var(--text-inactive);
-    font-size: 0.9rem;
-    font-weight: 300;
-    margin: 0;
-}
-
-.amount--to_exchange input,
-.amount--to_exchange select {
-    display: block;
-    outline: transparent;
-    font-size: 0.9rem;
-    border: transparent;
-    outline: transparent;
-    font-size: 1.1rem;
-}
-
-.amount--to_exchange input {
-    width: 100%;
-}
-
-.amount--to_exchange select {
-    width: max-content;
-}
-
-.amount--to_exchange {
-    border: 1px solid var(--tertiary-color);
-    width: 100%;
-    border-radius: 10px;
-    padding: 0.3rem 0.7rem 0.6rem 0.7rem;
-}
-
-
-/* Wallet  */
-
-.wallet--card {
-    background-color: var(--accent-color-dark);
+.coin--header {
+    background-color: var(--gray-300);
     padding: 1rem;
+    border-radius: 5px;
+}
+
+.price--cards {
+    background-color: var(--gray-300);
+    padding: 1.5rem;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.pricing {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.buy--orders {
+    background-color: var(--gray-300);
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+.amounts {
+    display: block;
+    border-radius: 5px;
+    width: 100%;
+    padding: 0.3rem;
+    background-color: #fff;
+    display: flex;
+}
+
+.amounts input {
+    display: block;
+    border-radius: 5px;
+    width: 100%;
+    padding: 0.8rem;
+    border: none;
+    outline: none;
+}
+
+.amounts select {
+    display: block;
+    border-radius: 5px;
+    width: 100%;
+    padding: 0.8rem;
+    border: none;
+    outline: none;
+}
+
+select.amount--box {
+    width: max-content;
+    background-color: var(--primary-color);
+}
+
+select.ngn {
+    background-color: green;
+    color: #fff;
+}
+
+
+/* App Footer  */
+
+.footer {
+    background: var(--main-color);
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-position: bottom;
+    margin-top: 3.3rem;
+}
+
+.footer a,
+.footer p {
+    color: var(--gray-200);
+    font-size: 0.9rem;
+}
+
+.footer a:hover {
+    color: var(--gray-100);
+}
+
+.footer h4 {
+    color: var(--gray-300);
+}
+
+
+/* Table  */
+
+.rwd-table {
+    margin: 1em 0;
+    min-width: 100%;
+}
+
+.rwd-table tr {
+    border-top: 1px solid var(--gray-200);
+    border-bottom: 2px solid var(--gray-200);
+}
+
+.rwd-table th {
+    display: none;
+}
+
+.rwd-table td {
+    display: block;
+}
+
+.rwd-table td:first-child {
+    padding-top: .5em;
+}
+
+.rwd-table td:last-child {
+    padding-bottom: .5em;
+}
+
+.rwd-table td:before {
+    content: attr(data-th) " ";
+    font-weight: bold;
+    width: max-content;
+    display: inline-block;
+    color: var(--main-color);
+}
+
+.rwd-table {
+    background: var(--cover);
+    color: var(--gray-600);
+    border-radius: .6em;
+    overflow: hidden;
+}
+
+.rwd-table th,
+.rwd-table td {
+    margin: .5em 1em;
+    font-size: 0.9rem;
+}
+
+.rwd-table th,
+.rwd-table td:before {
+    color: var(--main-color);
+}
+
+.mobile--header_nav {
+    display: none;
+}
+
+.mobile--header_nav li a {
+    color: #000;
+    padding: 1rem;
+}
+
+.mobile--header_nav ul li .router-link-exact-active {
+    background-color: var(--accent-color);
+    border-radius: 20px;
+}
+
+
+/* Add Photo and Preview  */
+
+[type="file"] {
+    height: 0;
+    width: 0;
+    overflow: hidden;
+}
+
+[type="file"]+label {
+    /* font-family: sans-serif; */
+    /* background: #f44336; */
+    /* padding: 10px 30px; */
+    /* border: 2px solid #f44336; */
+    /* border-radius: 3px; */
+    /* color: #fff; */
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.media--preview img {
+    display: block;
+    width: 100%;
+    height: 400px;
+    margin-bottom: 1rem;
+    object-fit: cover;
+    object-position: top;
     border-radius: 10px;
+}
+
+.actions--container {
+    border: 1px dashed var(--gray-500);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    border-radius: 5px;
 }

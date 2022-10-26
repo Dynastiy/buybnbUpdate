@@ -5,6 +5,8 @@ import Vuex from 'vuex'
 import auth from "../modules/auth/store/index"
 import transactions from '../modules/transactions/store/index'
 import user from '../modules/user/store/index'
+import home from '../modules/home/store/index'
+import referrals from '../modules/referrals/store/index'
 
 import createPersistedState from 'vuex-persistedstate';
 
@@ -33,6 +35,8 @@ export default new Vuex.Store({
     modules: {
         auth,
         transactions,
-        user
+        user,
+        home,
+        referrals
     },
 })
