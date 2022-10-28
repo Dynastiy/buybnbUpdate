@@ -24,7 +24,7 @@
             <div class="d-flex flex-column" style="gap: 20px">
               <div class="mb-3">
                 <div
-                  v-if="user"
+                  v-if="token"
                   class="d-flex flex-column"
                   style="gap: 10px"
                 >
@@ -108,7 +108,7 @@
                   </li>
                 </ul>
                 
-                <div v-show="!user" class="d-flex flex-column" style="gap: 20px">
+                <div v-if="token === null " class="d-flex flex-column" style="gap: 20px">
                   <router-link id="menu_item" @click="toggle" to="/login">
                     <button class="primary--btn w-100">Login</button>
                   </router-link>
@@ -153,6 +153,9 @@ export default {
       return greeting;
     },
     ...mapState("auth", ["user"]),
+    token(){
+      return localStorage.getItem('token')
+    }
   },
 };
 </script>

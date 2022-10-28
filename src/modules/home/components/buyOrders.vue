@@ -29,7 +29,7 @@
                 </div>
 
                 <div class="col-md-2">
-                    <button class="primary--btn">{{ 'Buy' }}</button>
+                    <button class="inactive--button"  disabled>Verified</button>
                 </div>
             </div>
         </div>

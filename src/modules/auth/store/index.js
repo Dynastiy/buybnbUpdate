@@ -78,6 +78,62 @@ export default {
 
         },
 
+
+        async forgotPassword({ commit }, credentials) {
+            commit("SET_LOADING", true)
+            try {
+                let res = await http().post("auth/forgot-password", credentials);
+                console.log(res);
+                Toastify({
+                    text: `Check mail for instructions`,
+                    className: "info",
+                    style: {
+                        background: "green",
+                        fontSize: "13px",
+                        borderRadius: "3px"
+                    },
+                }).showToast();
+            } catch (error) {
+                console.log(error);
+            } finally {
+                commit("SET_LOADING", false)
+                router.push('/sent-email')
+            }
+        },
+
+
+        async resetPassword({ commit }, payload) {
+            commit("SET_LOADING", true)
+            try {
+                let res = await http().post(`/auth/reset-password?token=${payload.token}&email=${payload.email}`, payload);
+                console.log(res);
+                Toastify({
+                    text: `Password Updated`,
+                    className: "info",
+                    style: {
+                        background: "green",
+                        fontSize: "13px",
+                        borderRadius: "3px"
+                    },
+                }).showToast();
+                router.push('/login')
+            } catch (error) {
+                console.log(error);
+                Toastify({
+                    text: `Something went wrong`,
+                    className: "info",
+                    style: {
+                        background: "red",
+                        fontSize: "13px",
+                        borderRadius: "3px"
+                    },
+                }).showToast();
+            } finally {
+                commit("SET_LOADING", false)
+
+            }
+        },
+
         async register({ commit }, credentials) {
             commit("SET_LOADING", true)
             try {
@@ -106,6 +162,8 @@ export default {
         },
         logout: ({ commit }) => {
             commit('RESET', '');
+            localStorage.removeItem("token")
+            router.push('/')
         }
     }
 };

@@ -185,7 +185,8 @@ body {
 
 .delivered,
 .completed,
-.credit {
+.credit,
+.active {
     color: green;
     background-color: rgba(0, 128, 0, 0.175);
     font-size: 0.7rem;
@@ -218,7 +219,8 @@ body {
 }
 
 .cancelled,
-.debit {
+.debit,
+.banned {
     color: red;
     background-color: rgba(255, 0, 0, 0.175);
     font-size: 0.7rem;
@@ -300,7 +302,7 @@ body {
 .inactive--button {
     display: block;
     width: 100%;
-    background-color: var(--primary-color-faded);
+    background-color: var(--main-color-faded);
     padding: 0.7rem;
     border-radius: 5px;
     border: none;

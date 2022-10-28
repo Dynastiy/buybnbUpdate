@@ -1,13 +1,19 @@
 <template>
   <div>
     <div class="bg-white p-4 rounded-lg">
-        <h6 class="text-secondary mb-1" style="font-weight:300">Wallet Balance</h6>
-        <h1 class="font-weight-bold"> {{ wallet_balance }}<span class="small font-weight-bold" style="font-size:12px">USD</span> </h1>
+       <div class="d-flex align-items-center" style="gap:10px">
+        <h3> {{ user.name }} </h3>
+        <span :class="user.status === 'unbanned' ? 'active' : 'banned' "> {{ user.status === 'unbanned' ? 'active' : 'banned' }} </span>
+       </div>
+       <h6> {{ user.email }} </h6>
+       <h4>
+         {{ user.upline_code }}
+       </h4>
     </div>
     <hr />
     <div class="bg-white p-4">
       <h5>Bank Details</h5>
-      <div class="mt-2" v-if="!bank_details">
+      <div class="mt-2" v-if="bank_details === null ">
         <button
           class="primary--btn"
           style="width: max-content"
@@ -44,6 +50,13 @@
       </div>
     </div>
 
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-danger d-flex py-1 mt-3" @click="userLogout" style="gap:5px">
+        <span>  <i-icon icon="icon-park-outline:logout"></i-icon> </span>
+        <span>Logout</span>
+      </button>
+    </div>
+
     <!-- Add Bank Account  -->
     <AddBankDetails @close="add_bank = !add_bank" v-if="add_bank" />
   </div>
@@ -63,9 +76,13 @@ export default {
   },
   methods: {
     ...mapActions("user", ["getUser", "deleteBankDetails"]),
+    ...mapActions("user", ['logout']),
     removeBankDetails(){
         this.deleteBankDetails(this.bank_details.id)
-    }
+    },
+    userLogout(){
+        this.logout()
+      }
   },
   beforeMount() {
     this.getUser();
@@ -76,9 +93,7 @@ export default {
     bank_details() {
       return this.user_profile.bank_details;
     },
-    wallet_balance() {
-      return this.user_profile.wallet.ref_balance;
-    },
+    
   },
 };
 </script>

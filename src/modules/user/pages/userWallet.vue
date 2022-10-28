@@ -1,6 +1,9 @@
 <template>
   <div>
-    <div class="wallet--card p-4 ">
+    <div class="text-danger" v-if="user_profile.wallet === null ">
+      You dont have any existing wallet
+    </div>
+    <div class="wallet--card p-4" v-else>
       <div class="d-flex" style="gap:30px">
         <div>
           <h6 class="text-secondary mb-1" style="font-weight: 300">

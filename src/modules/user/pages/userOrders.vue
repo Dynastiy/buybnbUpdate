@@ -6,39 +6,37 @@
     <div class="orders">
       <el-tabs v-model="activeName" @tab-click="handleClick">
         <el-tab-pane label="Buy Orders" name="first">
-          <BuysTable/>
+          <BuysTable />
         </el-tab-pane>
         <el-tab-pane label="Sell Orders" name="second">
-          <SellsTable/>
+          <SellsTable />
         </el-tab-pane>
       </el-tabs>
-
-     
     </div>
   </div>
 </template>
   <script>
-  import { mapActions } from 'vuex'
-  import BuysTable from '../components/buysTable.vue'
-  import SellsTable from '../components/sellsTable.vue'
+import { mapActions } from "vuex";
+import BuysTable from "../components/buysTable.vue";
+import SellsTable from "../components/sellsTable.vue";
 export default {
-  components:{
-    BuysTable, SellsTable
+  components: {
+    BuysTable,
+    SellsTable,
   },
-    data() {
-        return {
-            activeName: "first",
-        };
+  data() {
+    return {
+      activeName: "first",
+    };
+  },
+  methods: {
+    ...mapActions("user", ["getDeposits", "getSells"]),
+    handleClick(tab, event) {
+      console.log(tab, event);
     },
-    methods: {
-      ...mapActions('user', ['getDeposits', 'getSells']),
-        handleClick(tab, event) {
-            console.log(tab, event);
-        },
-    },
-    beforeMount(){
-      this.getDeposits(), 
-      this.getSells()
-    }
+  },
+  beforeMount() {
+    this.getDeposits(), this.getSells();
+  },
 };
 </script>

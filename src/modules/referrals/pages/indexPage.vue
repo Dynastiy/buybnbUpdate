@@ -70,13 +70,17 @@
             <!-- Copy referral link -->
               <div class="referral--codes pr-3 w-100">
                 <input type="text" v-model="referral_link"  placeholder="referral link" />
-                <i-icon icon="ion:copy"></i-icon>
+                <i-icon role="button" v-clipboard:copy="referral_link"
+                  v-clipboard:success="onCopy"
+                  v-clipboard:error="onError" icon="ion:copy"></i-icon>
               </div>
 
             <!-- Copy referral code  -->
               <div class="referral--codes pr-3 w-100">
                 <input type="text" v-model="user.ref_code"  placeholder="referral code" />
-                <i-icon icon="ion:copy"></i-icon>
+                <i-icon role="button" v-clipboard:copy="user.ref_code"
+                  v-clipboard:success="onCopy"
+                  v-clipboard:error="onError" icon="ion:copy"></i-icon>
               </div>
           </div>
         </section>
@@ -130,14 +134,21 @@ export default {
     }
   },
   methods:{
-    ...mapActions('referrals', ['getReferrals'])
+    ...mapActions('referrals', ['getReferrals']),
+    onCopy: function (value) {
+      alert("copied")
+      console.log(value);
+    },
+    onError: function () {
+      alert("Failed to copy texts");
+    },
   },
   beforeMount(){
     this.getReferrals()
   },
   mounted(){
-    console.log(window.location.origin)
   },
+  
   computed:{
     ...mapState('auth', ['user']),
     ...mapState('referrals', ['referrals']),

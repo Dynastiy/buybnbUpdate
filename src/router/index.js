@@ -209,13 +209,31 @@ const routes = [{
             import ( /* webpackChunkName: "about" */ '../modules/auth/pages/userRegistration.vue')
     },
     {
-        path: '/about',
-        name: 'about',
+        path: '/forgot-password',
+        name: 'forgot-password',
         // route level code-splitting
         // this generates a separate chunk (about.[hash].js) for this route
         // which is lazy-loaded when the route is visited.
         component: () =>
-            import ( /* webpackChunkName: "about" */ '../views/AboutView.vue')
+            import ( /* webpackChunkName: "about" */ '../modules/auth/pages/forgotPassword.vue')
+    },
+    {
+        path: '/reset-password',
+        name: 'reset-password',
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () =>
+            import ( /* webpackChunkName: "about" */ '../modules/auth/pages/resetPassword.vue')
+    },
+    {
+        path: '/sent-email',
+        name: 'sent-email',
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () =>
+            import ( /* webpackChunkName: "about" */ '../modules/auth/components/sentEmail.vue')
     }
 ]
 

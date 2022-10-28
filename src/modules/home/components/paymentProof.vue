@@ -64,7 +64,7 @@
             <h5>
               Order with reference
               <span class="text-success text-uppercase">
-                {{ createRef(deposit_details.ref_no) }}
+                {{ createRef(sell_details.ref_no) }}
               </span>
               Submitted!!!
             </h5>
@@ -119,7 +119,7 @@
         this.createSell(formData);
       },
       goToOrder(){
-          this.$router.push(`/bnb/ng/order/${this.deposit_details.id}`)
+          this.$router.push(`/bnb/ng/order/${this.sell_details.id}`)
           this.removeSubmitted()
       }
     },
