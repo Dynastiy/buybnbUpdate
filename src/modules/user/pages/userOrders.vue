@@ -5,40 +5,40 @@
     </div>
     <div class="orders">
       <el-tabs v-model="activeName" @tab-click="handleClick">
-        <el-tab-pane label="All Orders" name="first">
-          <h5 class="text-bold">All Orders</h5>
+        <el-tab-pane label="Buy Orders" name="first">
+          <BuysTable/>
         </el-tab-pane>
-        <el-tab-pane label="Pending Orders" name="second">
-            <h5 class="text-bold">Pending Orders</h5>
-        </el-tab-pane>
-        <el-tab-pane label="Completed Orders" name="third">
-            <h5 class="text-bold">Completed Orders</h5>
-        </el-tab-pane>
-        <el-tab-pane label="Cancelled Orders" name="fourth">
-            <h5 class="text-bold">Cancelled Orders</h5>
+        <el-tab-pane label="Sell Orders" name="second">
+          <SellsTable/>
         </el-tab-pane>
       </el-tabs>
 
-      <!-- Data table  -->
-      <section>
-        <OrdersTable/>
-      </section>
+     
     </div>
   </div>
 </template>
   <script>
-import OrdersTable from '../components/ordersTable.vue';
+  import { mapActions } from 'vuex'
+  import BuysTable from '../components/buysTable.vue'
+  import SellsTable from '../components/sellsTable.vue'
 export default {
+  components:{
+    BuysTable, SellsTable
+  },
     data() {
         return {
             activeName: "first",
         };
     },
     methods: {
+      ...mapActions('user', ['getDeposits', 'getSells']),
         handleClick(tab, event) {
             console.log(tab, event);
         },
     },
-    components: { OrdersTable }
+    beforeMount(){
+      this.getDeposits(), 
+      this.getSells()
+    }
 };
 </script>

@@ -19,12 +19,15 @@
     border-radius: 10px;
 }
 
-.modal--content input[type='text'] {
+.modal--content input[type='text'],
+.modal--content input[type='number'],
+.modal--content select {
     display: block;
     width: 100%;
     padding: 0.6rem;
     border: 1px solid var(--gray-300);
     border-radius: 5px;
+    outline: none;
 }
 
 .modal--content input[type=text]::placeholder {
@@ -293,4 +296,21 @@ select.ngn {
     justify-content: center;
     height: 100px;
     border-radius: 5px;
+}
+
+
+/* Wallet  */
+
+.wallet--card {
+    background: url('../img/back.jpeg');
+    background-position: center;
+    background-size: cover;
+    background-color: var(--main-color-faded);
+    background-blend-mode: overlay;
+    border-radius: 20px;
+}
+
+.wallet--card h1 {
+    font-size: 4rem;
+    color: #fff;
 }

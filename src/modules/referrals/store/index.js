@@ -48,7 +48,8 @@ export default {
             commit("SET_LOADING", true)
             http().get('auth/my-referrals')
                 .then((res) => {
-                    console.log(res);
+                    console.log(res.data.referrals.data);
+                    commit("SET_REFERRALS", res.data.referrals.data)
                 })
                 .catch((err) => {
                     console.log(err);

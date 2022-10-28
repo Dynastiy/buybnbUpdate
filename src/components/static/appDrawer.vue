@@ -20,6 +20,12 @@
                             </router-link>
                         </li>
                         <li>
+                            <router-link to="/wallet" class="d-flex align-items-center" style="gap:10px">
+                                <span> <i-icon icon="uil:transaction"></i-icon> </span>
+                                <span>Wallet</span>
+                            </router-link>
+                        </li>
+                        <li>
                             <router-link to="/transactions" class="d-flex align-items-center" style="gap:10px">
                                 <span> <i-icon icon="uil:transaction"></i-icon> </span>
                                 <span>Transactions</span>

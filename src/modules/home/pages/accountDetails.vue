@@ -49,7 +49,7 @@
                     color: var(--primary-color);
                     padding: 0.1rem 0.3rem;"
                   role="button"
-                  v-clipboard:copy="amount"
+                  v-clipboard:copy="amount.ngn_amount"
                   v-clipboard:success="onCopy"
                   v-clipboard:error="onError"
                   >{{ action2 }}

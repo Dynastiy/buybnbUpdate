@@ -170,6 +170,24 @@ const routes = [{
                 component: () =>
                     import ( /* webpackChunkName: "about" */ '../modules/user/pages/userOrders.vue')
             },
+            {
+                path: '/wallet',
+                name: 'wallet',
+                // route level code-splitting
+                // this generates a separate chunk (about.[hash].js) for this route
+                // which is lazy-loaded when the route is visited.
+                component: () =>
+                    import ( /* webpackChunkName: "about" */ '../modules/user/pages/userWallet.vue')
+            },
+            {
+                path: '/profile',
+                name: 'user-profile',
+                // route level code-splitting
+                // this generates a separate chunk (about.[hash].js) for this route
+                // which is lazy-loaded when the route is visited.
+                component: () =>
+                    import ( /* webpackChunkName: "about" */ '../modules/user/pages/userProfile.vue')
+            },
         ]
     },
     {

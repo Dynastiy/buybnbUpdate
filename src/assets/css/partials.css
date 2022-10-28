@@ -184,7 +184,8 @@ body {
 }
 
 .delivered,
-.completed {
+.completed,
+.credit {
     color: green;
     background-color: rgba(0, 128, 0, 0.175);
     font-size: 0.7rem;
@@ -192,7 +193,32 @@ body {
     border-radius: 3px;
 }
 
-.cancelled {
+.completed--order {
+    color: green;
+    /* background-color: rgba(0, 128, 0, 0.175); */
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 3px;
+}
+
+.canceled--order {
+    color: red;
+    /* background-color: rgba(255, 0, 0, 0.175); */
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 3px;
+}
+
+.pending--order {
+    color: orange;
+    /* background-color: rgba(255, 166, 0, 0.175); */
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 3px;
+}
+
+.cancelled,
+.debit {
     color: red;
     background-color: rgba(255, 0, 0, 0.175);
     font-size: 0.7rem;
@@ -218,8 +244,22 @@ body {
 
 .table td {
     /* color: var(--main-color); */
-    border-bottom: 1px solid var(--gray-300);
+    /* border-bottom: transparent; */
     font-weight: 500;
+    background-color: var(--accent-color);
+}
+
+
+/* .table tbody tr {
+    margin-bottom: 10px !important;
+} */
+
+.table td:nth-child(1) {
+    border-radius: 20px 0 0 20px;
+}
+
+.table td:last-child {
+    border-radius: 0 20px 20px 0;
 }
 
 .table tbody tr:hover {

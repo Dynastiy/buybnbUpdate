@@ -13,10 +13,10 @@
                         <span :class="user.name.charAt(0)" class="user--avatar text-capitalize"> {{ user.name.charAt(0) }} </span>
                         <div>
                             <h6 style="font-weight:400"> {{ user.name }} </h6>
-                            <span class="text-muted d-flex align-items-center mt-1" style="font-size:12px; gap:5px" role="button">
-                                <span> <i-icon icon="icon-park-outline:logout"></i-icon> </span>
-                                <span>Logout</span>
-                            </span>
+                            <router-link to="/profile" class="text-muted d-flex align-items-center mt-1" style="font-size:12px; gap:5px" role="button">
+                                <span> <i-icon icon="charm:person"></i-icon> </span>
+                                <span>View Profile</span>
+                            </router-link>
                         </div>
                         
                     </div>

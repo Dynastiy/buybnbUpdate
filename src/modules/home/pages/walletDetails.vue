@@ -21,8 +21,7 @@
                 <td class="font-weight-bold">
                   {{ wallet_address }}
                   <span
-                    style="
-                      border: 1px solid var(--primary-color);
+                    style="border: 1px solid var(--primary-color);
                       color: var(--primary-color);
                       padding: 0.1rem 0.3rem;
                     "
@@ -41,13 +40,13 @@
               <tr>
                 <td>Exactly with the amount</td>
                 <td class="font-weight-bold">
-                  {{ Number(amount.bnb_amount).toLocaleString() + 'BNB' }}
+                  {{ Number(amount.bnb_amount) + 'BNB' }}
                   <span
                     style="border: 1px solid var(--primary-color);
                       color: var(--primary-color);
                       padding: 0.1rem 0.3rem;"
                     role="button"
-                    v-clipboard:copy="amount"
+                    v-clipboard:copy="amount.bnb_amount"
                     v-clipboard:success="onCopy"
                     v-clipboard:error="onError"
                     >{{ action2 }}
@@ -108,7 +107,7 @@
   
   <script src="vue-clipboard2-master/dist/vue-clipboard.min.js"></script>
   <script>
-  import SubmitProof from '@/modules/home/components/submitProof.vue'
+  import SubmitProof from '@/modules/home/components/paymentProof.vue'
   import axios from "axios";
   import { mapState } from "vuex";
   export default {

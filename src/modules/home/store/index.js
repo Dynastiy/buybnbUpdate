@@ -20,7 +20,8 @@ const getDefaultState = () => {
         naira: null,
         oneBnbInNaira: null,
         submitted: false,
-        deposit_details: {}
+        deposit_details: {},
+        sell_details: {}
     }
 };
 
@@ -42,11 +43,14 @@ export default {
         depositDetails: state => {
             return state.deposit_details
         },
+        sellDetails: state => {
+            return state.sell_details
+        },
         isLoading: state => {
             return state.loading;
         },
         isSubmitted: state => {
-            return state.loading;
+            return state.submitted;
         },
     },
     mutations: {
@@ -64,6 +68,9 @@ export default {
         },
         SET_DEPOSIT_DETAILS: (state, data) => {
             state.deposit_details = data
+        },
+        SET_SELL_DETAILS: (state, data) => {
+            state.sell_details = data
         },
         SET_SUBMITTED: (state, data) => {
             state.submitted = data;
@@ -112,6 +119,40 @@ export default {
                         }
                     }).showToast();
                     commit("SET_DEPOSIT_DETAILS", (res.data.deposit))
+
+                    commit('SET_SUBMITTED', true)
+                })
+                .catch((err) => {
+                    Toastify({
+                        text: "Something went wrong",
+                        className: "info",
+                        style: {
+                            background: "red",
+                            fontSize: "11px",
+                            borderRadius: "3px"
+                        }
+                    }).showToast();
+                    return err
+                }).finally(() => {
+                    commit("SET_LOADING", false)
+                })
+        },
+
+        createSell({ commit }, payload) {
+            commit('SET_LOADING', true)
+            http().post('/create-sell', payload)
+                .then((res) => {
+                    console.log(res.data.sell);
+                    Toastify({
+                        text: "Sell Order Created",
+                        className: "info",
+                        style: {
+                            background: "#333",
+                            fontSize: "11px",
+                            borderRadius: "3px"
+                        }
+                    }).showToast();
+                    commit("SET_SELL_DETAILS", (res.data.sell))
 
                     commit('SET_SUBMITTED', true)
                 })

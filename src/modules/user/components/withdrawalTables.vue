@@ -5,7 +5,7 @@
           <!-- My referrals Table -->
           <section class="">
             <div class="mt-3 other--tables">
-              <h4>Transaction History</h4>
+              <h4>Withdrawal History</h4>
               <div class="table-responsive">
                 <table class="table table-centered table-nowrap">
                   <tr>
@@ -16,12 +16,12 @@
                     <th scope="col">Transaction Class</th>
                     <th scope="col">Status</th>
                   </tr>
-                  <tr v-if="transactions.length === 0">
+                  <tr v-if="withdrawals.length === 0">
                       <span class="text-danger">
                         No items here
                       </span>
                     </tr>
-                  <tr v-for="item in transactions" :key="item.id">
+                  <tr v-for="item in withdrawals" :key="item.id">
                     <td class="text-uppercase">{{ createRef(item.ref_no) }}</td>
                     <td>{{ timeStamp(item.created_at) }}</td>
                     <td>&#8358;{{ item.amount_naira.toLocaleString() }}</td>
@@ -62,13 +62,14 @@
       };
     },
     methods:{
-        ...mapActions('transactions', ['getTransactions'])
+        ...mapActions('user', ['getWithdrawals'])
     },
     beforeMount(){
-        this.getTransactions()
+        this.getWithdrawals()
     },
     computed: {
-      ...mapState("transactions", ["transactions"]),
+      ...mapState("user", ["withdrawals"]),
+      ...mapState("home", ["naira"]),
     },
   };
   </script>
