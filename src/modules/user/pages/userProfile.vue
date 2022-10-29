@@ -76,7 +76,7 @@ export default {
   },
   methods: {
     ...mapActions("user", ["getUser", "deleteBankDetails"]),
-    ...mapActions("user", ['logout']),
+    ...mapActions("auth", ['logout']),
     removeBankDetails(){
         this.deleteBankDetails(this.bank_details.id)
     },

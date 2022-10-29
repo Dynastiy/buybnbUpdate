@@ -178,6 +178,22 @@ export default {
                 })
         },
 
+        // Get Single Sell
+        getSingleSell({ commit }, id) {
+            commit("SET_LOADING", true)
+            http().get(`/find-sell/${id}`)
+                .then((res) => {
+                    console.log(res);
+                    commit("SET_ORDER", res.data.sell)
+                })
+                .catch((err) => {
+                    return err
+                })
+                .finally(() => {
+                    commit("SET_LOADING", false)
+                })
+        },
+
         // Add Bank Details
         addBankDetails({ dispatch }, payload) {
             http().post('/add-bank-details', payload)

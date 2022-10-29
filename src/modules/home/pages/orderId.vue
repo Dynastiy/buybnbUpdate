@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="container">
-      <div class="bg-white p-4">
+      <div class="bg-white p-4" >
        <div class="d-flex align-items-center justify-content-between">
         <div>
           <h5 class="font-weight-bold text-uppercase">
@@ -14,7 +14,8 @@
         </div>
         <div>
           <h6 class="text-secondary">{{ order.status === "pending" ? 'Please wait...' : 'BNB Disbursed' }}</h6>
-          <h4 id="countdown" class="text-danger"></h4>
+          <!-- <h4 id="countdown" class="text-danger"></h4> -->
+          <h4> {{ timeLeft + 'secs' }} </h4>
           <!-- <progress value="0" max="180" id="progressBar"></progress> -->
         </div>
        </div>
@@ -28,7 +29,7 @@
             </tr>
             <tr>
               <td>Wallet Address</td>
-              <td>{{ order.wallet_address }}</td>
+              <td>{{ order.wallet_address || 'null' }}</td>
             </tr>
 
             <tr>
@@ -76,34 +77,30 @@ export default {
       timeStamp,
       id: this.$route.params.id,
     //   order: null,
-    getNewOrder: null
+    getNewOrder: null,
+    timeleft: 180,
+    timeLimit: 180,
+      timePassed: 0,
+      timerInterval: null,
     };
   },
 
   methods: {
     ...mapActions("user", ["getSingleOrder"]),
+    ...mapActions("user", ["getSingleSell"]),
+    startTimer() {
+      clearInterval(this.productCheckInterval)
+      this.timerInterval = setInterval(() => {
+        if(this.order.status === 'pending'){
+           (this.timePassed += 1)
+        }
+       
+    }, 1000)
+  },
   },
 
   mounted() {
-    var objectValue = this.order
-    // console.log(order);
-    var timeleft = 180;
-    // console.log(this.order);
-    document.getElementById("countdown").innerHTML = timeleft;
-    var downloadTimer = setInterval(function () {
-        var item = objectValue
-      if (timeleft <= 0 || item.status === "completed" ) {
-        clearInterval(downloadTimer);
-        var timeralert = document.getElementById("countdown");
-        // var progressBar = document.getElementById("progressBar");
-        timeralert.style.display = "none";
-        // progressBar.style.display = "none";
-      }
-      document.getElementById("countdown").innerHTML = timeleft + "secs";
-    //   document.getElementById("progressBar").value = 180 - timeleft;
-      timeleft -= 1;
-    }, 1000);
-
+    this.startTimer();
     
   },
 
@@ -115,8 +112,9 @@ export default {
       this.getNewOrder = setInterval(() => {
         if(this.order.status === 'pending'){
             this.getSingleOrder(this.id)
+            this.getSingleSell(this.id)
         }
-      }, 20000)
+      }, 30000)
     }
   },
 //   var reloadStatus = setInterval(function () {
@@ -127,10 +125,31 @@ export default {
 //     }, 5000);
   beforeMount() {
     this.getSingleOrder(this.id);
+    this.getSingleSell(this.id);
   },
 
   computed: {
-    ...mapState("user", ["order"]),
+    ...mapState("user", ["order", "loading"]),
+    timeCountdown(){
+      const timeLeft = this.timeleft
+      // The largest round integer less than or equal 
+        //  to the result of time divided being by 60.
+      const minutes = Math.floor(timeLeft / 60)
+      // Seconds are the remainder of the time divided
+        //  by 60 (modulus operator)
+      let seconds = timeLeft % 60
+      // If the value of seconds is less than 10,
+        //  then display seconds with a leading zero
+      if (seconds < 10) {
+        seconds = `0${seconds}`
+      }
+      // The output in MM:SS format
+      return `${minutes}:${seconds}`
   },
-};
+  timeLeft() {
+      return this.timeLimit - this.timePassed
+    }
+},
+
+}
 </script>

@@ -60,7 +60,6 @@ export default {
                         borderRadius: "3px"
                     },
                 }).showToast();
-                router.push('/dashboard')
                 localStorage.setItem("token", token)
                 commit('SET_USER', user);
                 let url = window.location.search
@@ -68,6 +67,7 @@ export default {
                 const params = new URLSearchParams(url);
                 // const q = params.get("return_url");
                 const d = params.get("redirectFrom")
+                router.push('/dashboard')
                     // console.log(q);
                 router.push(d)
             } catch (error) {
@@ -155,11 +155,12 @@ export default {
             } finally {
                 commit("SET_LOADING", false)
             }
-
         },
+
         amounts: ({ commit }, { amount }) => {
             commit('SET_AMOUNT', amount);
         },
+
         logout: ({ commit }) => {
             commit('RESET', '');
             localStorage.removeItem("token")
