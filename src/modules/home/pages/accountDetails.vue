@@ -87,7 +87,7 @@
 
         <div class="d-flex mt-3" style="gap: 20px" v-if="!require_proof">
           <button class="btn btn-success" @click="require_proof = true">I have sent the payment</button>
-          <button class="btn btn-danger">Cancel my deposit</button>
+          <button class="btn btn-danger"  @click="$router.go(-1)">Cancel my deposit</button>
         </div>
 
 
@@ -95,8 +95,8 @@
         <button class="btn btn-success" @click="submitProof">Submit Payment Proof</button>
         <hr>
         <div class="d-flex mt-3" style="gap: 20px">
-          <button class="btn btn-outline-danger">Cancel my deposit</button>
-          <button class="btn btn-outline-success">Contact Support</button>
+          <button class="btn btn-outline-danger" @click="$router.go(-1)">Cancel my deposit</button>
+          <a href="https://chat.whatsapp.com/CC7gMzPetgv08EE0EchOFi"><button class="btn btn-outline-success">Contact Support</button></a>
         </div>
        </div>
       </div>
