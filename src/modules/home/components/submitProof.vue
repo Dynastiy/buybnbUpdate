@@ -71,13 +71,19 @@
           <div>
           </div>
           <p class="small">Please wait while your order status is updated!!!</p>
-            <button
+            <div class="d-flex justify-content-between" style="">
+              <button
                 @click="goToOrder"
               class="mt-2 primary--btn mx-auto"
               style="width: max-content"
             >
               View Submitted Order
             </button>
+
+            <button @click="router.push('/dashboard')">
+              Go To Dashboard
+            </button>
+            </div>
         </div>
       </div>
     </div>
