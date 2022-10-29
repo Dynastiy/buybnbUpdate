@@ -42,8 +42,7 @@
                 <td class="font-weight-bold">
                   {{ Number(amount.bnb_amount) + 'BNB' }}
                   <span
-                    style="border: 1px solid var(--primary-color);
-                      color: var(--primary-color);
+                    style="border: 1px solid var(--primary-color); color: var(--primary-color);
                       padding: 0.1rem 0.3rem;"
                     role="button"
                     v-clipboard:copy="amount.bnb_amount"
