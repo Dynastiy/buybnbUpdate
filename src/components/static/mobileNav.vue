@@ -91,7 +91,7 @@
                   </li>
                   <li id="menu_item" @click="toggle">
                     <router-link
-                      to="/refer-and-earn"
+                      to="/referrals"
                       class="d-flex align-items-center"
                       style="gap: 10px"
                     >

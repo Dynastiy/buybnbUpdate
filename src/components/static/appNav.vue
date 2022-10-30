@@ -19,7 +19,7 @@
                   <router-link to="/bnb/ng">Trade</router-link>
                 </li>
                 <li>
-                  <router-link to="/refer-and-earn">Refer & Earn</router-link>
+                  <router-link to="/referrals">Refer & Earn</router-link>
                 </li>
               </ul>
               <div

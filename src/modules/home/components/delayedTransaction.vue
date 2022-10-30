@@ -9,7 +9,7 @@
           <div class="whatsapp social" >
             <a href="https://chat.whatsapp.com/CC7gMzPetgv08EE0EchOFi">
             <span>START CHAT</span>
-            <img src="@/assets/img/whatsapp.svg" width="40" alt="">
+            <img src="@/assets/img/whatsapp.png" width="40" alt="">
             </a>
           </div>
           <div class="telegram social">
@@ -17,7 +17,7 @@
             <span>
               START CHAT
             </span>
-            <img src="@/assets/img/telegram.svg" width="40" alt="">
+            <img src="@/assets/img/telegram.svg" width="30" alt="">
             </a>
           </div>
         </div>
