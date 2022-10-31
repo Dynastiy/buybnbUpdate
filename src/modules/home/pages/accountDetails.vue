@@ -37,17 +37,19 @@
             </tr>
             <tr>
               <td>Bank Account Name</td>
-              <td class="font-weight-bold">{{ account_name }}</td>
+              <td class="font-weight-bold">Ndifreke UDOBONG</td>
             </tr>
             <tr>
               <td>Exactly with the amount</td>
               <td class="font-weight-bold">
-                {{ Number(amount.ngn_amount).toLocaleString() + 'NGN' }}
+                {{ Number(amount.ngn_amount).toLocaleString() + "NGN" }}
 
                 <span
-                  style="border: 1px solid var(--primary-color);
+                  style="
+                    border: 1px solid var(--primary-color);
                     color: var(--primary-color);
-                    padding: 0.1rem 0.3rem;"
+                    padding: 0.1rem 0.3rem;
+                  "
                   role="button"
                   v-clipboard:copy="amount.ngn_amount"
                   v-clipboard:success="onCopy"
@@ -86,25 +88,35 @@
         </div>
 
         <div class="d-flex mt-3" style="gap: 20px" v-if="!require_proof">
-          <button class="btn btn-success" @click="require_proof = true">I have sent the payment</button>
-          <button class="btn btn-danger"  @click="$router.go(-1)">Cancel my deposit</button>
+          <button class="btn btn-success" @click="require_proof = true">
+            I have sent the payment
+          </button>
+          <button class="btn btn-danger" @click="$router.go(-1)">
+            Cancel my deposit
+          </button>
         </div>
 
-
-       <div class="mt-3" v-if="require_proof">
-        <button class="btn btn-success" @click="submitProof">Submit Payment Proof</button>
-        <hr>
-        <div class="d-flex mt-3" style="gap: 20px">
-          <button class="btn btn-outline-danger" @click="$router.go(-1)">Cancel my deposit</button>
-          <a href="https://chat.whatsapp.com/CC7gMzPetgv08EE0EchOFi"><button class="btn btn-outline-success">Contact Support</button></a>
+        <div class="mt-3" v-if="require_proof">
+          <button class="btn btn-success" @click="submitProof">
+            Submit Payment Proof
+          </button>
+          <hr />
+          <div class="d-flex mt-3" style="gap: 20px">
+            <button class="btn btn-outline-danger" @click="$router.go(-1)">
+              Cancel my deposit
+            </button>
+            <a href="https://chat.whatsapp.com/CC7gMzPetgv08EE0EchOFi"
+              ><button class="btn btn-outline-success">
+                Contact Support
+              </button></a
+            >
+          </div>
         </div>
-       </div>
       </div>
     </div>
 
     <!-- Submit Proof -->
-    <SubmitProof @close="closeSubmitProofModal" v-if="submit_proof"/>
-
+    <SubmitProof @close="closeSubmitProofModal" v-if="submit_proof" />
   </div>
 </template>
 
@@ -176,17 +188,16 @@ export default {
     },
     account_number() {
       let queryName = this.$route.query.bank_type;
-      return queryName == "gtb" ? "0658338408" : "0110759510";
-    },
-    account_name() {
-      let queryName = this.$route.query.bank_type;
-      return queryName == "gtb" ? "Ndifreke UDOBONG" : "PERFECT MERCHANDISE";
+      return queryName == "gtb" ? "0658338408"
+        : (queryName == 'polaris-bank') ? "7040358980" : "6075265384";
     },
     bank_name() {
       let queryName = this.$route.query.bank_type;
-      return queryName == "gtb"
-        ? "Guaranty Trust Bank"
-        : "Goodnews Microfinance Bank";
+      let check =  queryName == "gtb"
+        ? "Guaranty Trust Bank" :
+        ( queryName === 'polaris-bank') ? 'Polaris Bank' : '9 Payment service Bank' ;
+        return check
+      
     },
   },
 };

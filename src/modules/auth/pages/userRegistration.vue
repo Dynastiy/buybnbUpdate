@@ -101,7 +101,7 @@
       },
     },
     mounted(){
-        let code = this.$route.query.referral_id
+        let code = this.$route.query.referral_code
         console.log(code);
         this.credentials.upline_code = code
     },

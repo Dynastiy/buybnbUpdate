@@ -42,12 +42,12 @@
           "
         >
 
-        <!-- Goodnews Microfinance Bank -->
+        <!-- Polaris Bank -->
           <div>
             <h5 class="font-weight-bold">
               <span class="text-success"> {{ Number(higherNgnRate).toLocaleString() }} </span> NGN/BNB -
               <span class="text-secondary" style="font-weight: 400">via</span>
-              Goodnews Microfinance Bank
+              Polaris Bank
             </h5>
             <div class="mt-3 mt-2">
               <span class="text-secondary">Total Amount:</span>
@@ -60,7 +60,7 @@
           </div>
 
           <div>
-            <router-link :to='"/buy/bnb/account-details/?bank_type=goodnews_microfinance_bank"'>
+            <router-link :to='"/buy/bnb/account-details/?bank_type=polaris-bank"'>
                 <button @click="saveAmount(qty2)" class="btn btn-success">Buy</button>
             </router-link>
           </div>
@@ -95,10 +95,47 @@
 
           <div>
             <router-link :to='"/buy/bnb/account-details/?bank_type=gtb"'>
-                <button @click="saveAmount(pty2)" class="btn btn-success">Buy</button>
+                <button @click="saveAmount(qty)" class="btn btn-success">Buy</button>
             </router-link>
           </div>
         </div>
+
+        <!-- 9 Payment service Bank  -->
+        <div
+          class="
+            bg-white
+            p-3
+            mt-3
+            d-flex
+            align-items-center
+            justify-content-between
+          "
+        >
+          <div>
+            <h5 class="font-weight-bold">
+              <span class="text-success"> {{ Number(ngnRate).toLocaleString() }} </span> NGN/BNB -
+              <span class="text-secondary" style="font-weight: 400">via</span>
+              9 Payment service Bank
+            </h5>
+            <div class="mt-3 mt-2">
+              <span class="text-secondary">Total Amount:</span>
+              <span> {{(qty).toLocaleString()}} <span> {{ currency_type === 'bnb' ? 'NGN' : 'BNB'  }} </span> </span>
+            </div>
+            <div>
+              <span class="text-secondary">Completion Time:</span>
+              <span> ~180secs </span>
+            </div>
+          </div>
+
+          <div>
+            <router-link :to='"/buy/bnb/account-details/?bank_type=9-payment-service-bank "'>
+                <button @click="saveAmount(qty)" class="btn btn-success">Buy</button>
+            </router-link>
+          </div>
+        </div>
+
+
+
       </div>
     </div>
   </div>

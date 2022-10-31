@@ -153,7 +153,7 @@ export default {
     ...mapState('auth', ['user']),
     ...mapState('referrals', ['referrals']),
     referral_link(){
-      return window.location.origin + '/register/?referral_id=' + this.user.ref_code
+      return window.location.origin + '/register/?referral_code=' + this.user.ref_code
     }
   }
 }
